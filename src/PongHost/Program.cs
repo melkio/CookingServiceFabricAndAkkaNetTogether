@@ -23,6 +23,8 @@ akka {
             var config = ConfigurationFactory.ParseString(Hocon);
             var system = ActorSystem.Create("Pong", config);
 
+            var actor = system.ActorOf<PongActor>("pong");
+
             Console.ReadLine();
         }
     }
