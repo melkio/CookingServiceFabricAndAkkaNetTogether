@@ -23,6 +23,9 @@ akka {
             var config = ConfigurationFactory.ParseString(Hocon);
             var system = ActorSystem.Create("Ping", config);
 
+            var actor = system.ActorOf<PingActor>("ping");
+            actor.Tell(new Start());
+
             Console.ReadLine();
         }
     }
