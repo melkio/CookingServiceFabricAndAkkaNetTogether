@@ -13,7 +13,7 @@ namespace AkkaIntro
         {
             var actor = Context.Child(message.CounterId);
             if (actor.IsNobody())
-                actor = Context.ActorOf<CounterActor>(message.CounterId);
+                actor = Context.ActorOf<FailCounterActor>(message.CounterId);
 
             actor.Forward(message);
         }
