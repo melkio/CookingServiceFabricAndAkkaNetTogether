@@ -20,7 +20,7 @@ namespace AkkaIntro
                 if (value >= MAX)
                     Become(Down);
 
-                Console.WriteLine($"Current value: {value}");
+                PrintCurrentValue();
             });
         }
 
@@ -32,8 +32,13 @@ namespace AkkaIntro
                 if (value <= MIN)
                     Become(Up);
 
-                Console.WriteLine($"Current value: {value}");
+                PrintCurrentValue();
             });
+        }
+
+        private void PrintCurrentValue()
+        {
+            Console.WriteLine($"Counter #{Self.Path.Name}: {value}");
         }
     }
 }
