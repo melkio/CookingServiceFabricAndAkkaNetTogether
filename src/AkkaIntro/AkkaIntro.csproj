@@ -80,6 +80,7 @@
     <Compile Include="CounterGatewayActor.cs" />
     <Compile Include="EchoController.cs" />
     <Compile Include="FailCounterActor.cs" />
+    <Compile Include="GetValue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
