@@ -1,4 +1,5 @@
-﻿using Akka.Actor;
+﻿using System;
+using Akka.Actor;
 
 namespace AkkaIntro
 {
@@ -8,7 +9,13 @@ namespace AkkaIntro
 
         public CounterActor()
         {
-            Receive<Count>(message => value++);
+            Receive<Count>(message => Handle(message));
+        }
+
+        private void Handle(Count message)
+        {
+            value++;
+            Console.WriteLine($"Current value: {value}");
         }
     }
 }

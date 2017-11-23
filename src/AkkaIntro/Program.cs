@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Akka.Actor;
+using System;
 
 namespace AkkaIntro
 {
@@ -10,6 +7,12 @@ namespace AkkaIntro
     {
         static void Main(string[] args)
         {
+            var system = ActorSystem.Create("demo");
+            var actor = system.ActorOf<CounterActor>("counter");
+
+            actor.Tell(new Count("42"));
+
+            Console.ReadLine();
         }
     }
 }
