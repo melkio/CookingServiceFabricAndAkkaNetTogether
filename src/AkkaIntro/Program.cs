@@ -10,7 +10,12 @@ namespace AkkaIntro
             var system = ActorSystem.Create("demo");
             var actor = system.ActorOf<CounterActor>("counter");
 
-            actor.Tell(new Count("42"));
+            system.Scheduler.ScheduleTellRepeatedly(
+                initialDelay: TimeSpan.FromSeconds(1),
+                interval: TimeSpan.FromMilliseconds(500),
+                receiver: actor,
+                message: new Count("42"),
+                sender: Nobody.Instance);
 
             Console.ReadLine();
         }
