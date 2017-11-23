@@ -78,6 +78,7 @@
     <Compile Include="Count.cs" />
     <Compile Include="CounterActor.cs" />
     <Compile Include="CounterGatewayActor.cs" />
+    <Compile Include="CountersController.cs" />
     <Compile Include="EchoController.cs" />
     <Compile Include="FailCounterActor.cs" />
     <Compile Include="GetValue.cs" />
