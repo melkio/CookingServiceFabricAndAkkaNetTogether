@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActorsEnvironment.cs" />
     <Compile Include="Count.cs" />
     <Compile Include="CounterActor.cs" />
     <Compile Include="CounterGatewayActor.cs" />

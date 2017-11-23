@@ -1,5 +1,4 @@
-﻿using Akka.Actor;
-using Microsoft.Owin.Hosting;
+﻿using Microsoft.Owin.Hosting;
 using System;
 
 namespace AkkaIntro
@@ -8,17 +7,7 @@ namespace AkkaIntro
     {
         static void Main(string[] args)
         {
-            var system = ActorSystem.Create("demo");
-            var counter = system.ActorOf<CounterGatewayActor>("counter");
-            var ticker = system.ActorOf<TickActor>("ticker");
-
-            system.Scheduler.ScheduleTellRepeatedly(
-                initialDelay: TimeSpan.FromSeconds(1),
-                interval: TimeSpan.FromMilliseconds(500),
-                receiver: ticker,
-                message: new Tick(),
-                sender: Nobody.Instance);
-
+            ActorsEnvironment.ConfigureAndRun();
             WebApp.Start<Startup>("http://+:9000");
 
             Console.ReadLine();
