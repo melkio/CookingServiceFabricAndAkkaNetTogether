@@ -17,5 +17,10 @@ namespace AkkaIntro
 
             actor.Forward(message);
         }
+
+        protected override SupervisorStrategy SupervisorStrategy()
+        {
+            return new AllForOneStrategy(Decider.From(x => Directive.Restart));
+        }
     }
 }
