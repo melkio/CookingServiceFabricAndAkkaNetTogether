@@ -1,4 +1,5 @@
 ﻿using Akka.Actor;
+using Microsoft.Owin.Hosting;
 using System;
 
 namespace AkkaIntro
@@ -17,6 +18,8 @@ namespace AkkaIntro
                 receiver: ticker,
                 message: new Tick(),
                 sender: Nobody.Instance);
+
+            WebApp.Start<Startup>("http://+:9000");
 
             Console.ReadLine();
         }

@@ -77,9 +77,11 @@
     <Compile Include="Count.cs" />
     <Compile Include="CounterActor.cs" />
     <Compile Include="CounterGatewayActor.cs" />
+    <Compile Include="EchoController.cs" />
     <Compile Include="FailCounterActor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
     <Compile Include="Tick.cs" />
     <Compile Include="TickActor.cs" />
   </ItemGroup>
