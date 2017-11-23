@@ -7,6 +7,7 @@ namespace AkkaIntro
         public CounterGatewayActor()
         {
             Receive<Count>(message => Handle(message));
+            Receive<GetValue.Request>(message => Handle(message));
         }
 
         private void Handle(Count message)
@@ -15,6 +16,12 @@ namespace AkkaIntro
             if (actor.IsNobody())
                 actor = Context.ActorOf<FailCounterActor>(message.CounterId);
 
+            actor.Forward(message);
+        }
+
+        private void Handle(GetValue.Request message)
+        {
+            var actor = Context.Child(message.CounterId);
             actor.Forward(message);
         }
 

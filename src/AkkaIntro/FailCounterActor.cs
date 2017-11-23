@@ -12,6 +12,7 @@ namespace AkkaIntro
         public FailCounterActor()
         {
             Receive<Count>(message => Handle(message));
+            Receive<GetValue.Request>(message => Handle(message));
         }
 
         private void Handle(Count message)
@@ -21,6 +22,11 @@ namespace AkkaIntro
                 throw new ArgumentOutOfRangeException(nameof(value));
 
             PrintCurrentValue();
+        }
+
+        private void Handle(GetValue.Request message)
+        {
+            Sender.Tell(new GetValue.Response(value));
         }
 
         private void PrintCurrentValue()
