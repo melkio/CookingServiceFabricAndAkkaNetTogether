@@ -8,7 +8,7 @@ namespace AkkaIntro
         static void Main(string[] args)
         {
             var system = ActorSystem.Create("demo");
-            var actor = system.ActorOf<CounterActor>("counter");
+            var actor = system.ActorOf<CounterGatewayActor>("counter");
 
             system.Scheduler.ScheduleTellRepeatedly(
                 initialDelay: TimeSpan.FromSeconds(1),
