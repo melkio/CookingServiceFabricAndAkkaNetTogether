@@ -141,6 +141,7 @@
     <Compile Include="PingActor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Start.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
