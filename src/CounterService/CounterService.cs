@@ -16,7 +16,8 @@ namespace CounterService
 
         protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
         {
-            return new ServiceInstanceListener[0];
+            return new ServiceInstanceListener[]
+                { new ServiceInstanceListener(context => new RemoteCommunicationListener(context)) };
         }
 
         protected override async Task RunAsync(CancellationToken cancellationToken)
