@@ -183,6 +183,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CounterService.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="RemoteCommunicationListener.cs" />
     <Compile Include="ServiceEventSource.cs" />
   </ItemGroup>
   <ItemGroup>
