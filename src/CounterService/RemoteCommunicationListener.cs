@@ -53,6 +53,8 @@ akka {
                 .WithFallback(HoconConfiguration);
             system = ActorSystem.Create("Counter", config);
 
+            system.ActorOf<CounterGatewayActor>("counter");
+
             return Task.FromResult($"akka.tcp://{system.Name}@{context.NodeContext.IPAddressOrFQDN}:{endpoint.Port}");
         }
     }
