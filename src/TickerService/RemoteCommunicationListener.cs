@@ -4,6 +4,7 @@ using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using System.Fabric;
 using Akka.Actor;
 using Akka.Configuration;
+using System;
 
 namespace TickerService
 {
@@ -52,6 +53,14 @@ akka {
                 .WithFallback($"akka.remote.dot-netty.tcp.port = {endpoint.Port}")
                 .WithFallback(HoconConfiguration);
             system = ActorSystem.Create("Ticker", config);
+
+            var actor = system.ActorOf<TickActor>();
+            system.Scheduler.ScheduleTellRepeatedly(
+                initialDelay: TimeSpan.FromSeconds(1),
+                interval: TimeSpan.FromMilliseconds(500),
+                receiver: actor,
+                message: new Tick(),
+                sender: Nobody.Instance);
 
             return Task.FromResult($"akka.tcp://{system.Name}@{context.NodeContext.IPAddressOrFQDN}:{endpoint.Port}");
         }
